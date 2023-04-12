@@ -1,15 +1,18 @@
 <template>
   <Header />
+  <MainFirst />
 </template>
 
 <script>
 import Header from './components/Header.vue';
+import MainFirst from './components/MainFirst.vue';
 
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    MainFirst
 }
 }
 </script>

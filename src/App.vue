@@ -1,18 +1,26 @@
 <template>
   <Header />
-  <MainFirst />
+  <Visual />
+  <Personal />
+  <Banner />
+  <Footer />
 </template>
 
 <script>
 import Header from './components/Header.vue';
-import MainFirst from './components/MainFirst.vue';
-
+import Visual from './components/Visual.vue';
+import Personal from './components/Personal.vue';
+import Banner from './components/Banner.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
-    MainFirst
+    Visual,
+    Personal,
+    Banner,
+    Footer
 }
 }
 </script>

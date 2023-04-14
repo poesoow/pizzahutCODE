@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap_visual">
     <!-- :autoplay="{ delay: 2000, disableOnInteraction: true, pauseOnMouseEnter: true, }"  -->
      <swiper
       :pagination="{type: 'fraction'}"

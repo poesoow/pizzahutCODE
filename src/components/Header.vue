@@ -2,7 +2,7 @@
 <template>
   <div class="wrap_header">
     <div class="logo">
-      <a href="#" @click.prevent>
+      <a href="https://www.pizzahut.co.kr/">
         <img :src="require('@/assets/images/logo1.png')" alt="로고">
       </a>
     </div>
@@ -58,13 +58,16 @@
   }
   nav.gnb ul{
     display: flex;
-    li a{
-      display: block;
-      margin: 0 30px;
-      padding: 30px 0;
-      font-weight: 500;
-      font-size: 20px;
-    }
+    li{
+      flex-shrink: 0;
+      a{
+        display: block;
+        margin: 0 30px;
+        padding: 30px 0;
+        font-weight: 500;
+        font-size: 20px;
+      }
+    } 
   }
   div.utility{
     flex-grow: 1;

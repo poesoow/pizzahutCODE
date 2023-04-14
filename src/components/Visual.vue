@@ -7,7 +7,7 @@
       :loop="true"
       :autoplay="{ delay: 5000, }" 
       :modules="modules"
-      class="mySwiper"
+      class="mySwiper_visual"
     >
       <swiper-slide v-for="e in 6" :key="e">
         <img :src="require(`@/assets/images/main_visual_swipe${e}.png`)" :alt="`배너`">
@@ -55,7 +55,7 @@ import 'swiper/css/navigation';
 </script>
 
 <style lang="scss">
-.mySwiper{
+.mySwiper_visual{
   position: relative;
   height: 690px;
   .swiper-button-next, .swiper-button-prev{
@@ -67,16 +67,17 @@ import 'swiper/css/navigation';
   .swiper-button-next{
     margin-right: 110px;
   }
-  .swiper-pagination{
-    background-color: transparent;
-    width: 5%;
-    left: calc(50% - 680px);
-    bottom: 165px;
-    color: #fff;
-    font-size: 20px;
-    line-height: 46px;
-    letter-spacing: -0.2px;
-  }
+  // 중복 문제로 인하여 scss 말고 일반 css 로 적용
+  // .swiper-pagination{
+  //   background-color: transparent;
+  //   width: 5%;
+  //   left: calc(50% - 680px);
+  //   bottom: 165px;
+  //   color: #fff;
+  //   font-size: 20px;
+  //   line-height: 46px;
+  //   letter-spacing: -0.2px;
+  // }
   /* 아래는 swiper 가지고 온 그대로 */
   .swiper {
     width: 100%;
@@ -101,6 +102,21 @@ import 'swiper/css/navigation';
 }
 
 
+
+
+</style>
+<style>
+/* 중복문제 때문에 scss 안에서 뺌 */
+.mySwiper_visual .swiper-pagination{
+    background-color: transparent;
+    width: 5%;
+    left: calc(50% - 680px);
+    bottom: 165px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 46px;
+    letter-spacing: -0.2px;
+  }
 
 
 </style>

@@ -26,7 +26,7 @@
         :loop="true"
         :pagination="true"
         :navigation="{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }"
-        :autoplay="{ delay: 1000 }" 
+        :autoplay="{ delay: 5000 }" 
         :modules="modules"
         class="mySwiper_visual"
       >
@@ -177,7 +177,6 @@ import 'swiper/css/navigation';
 </style>
 
 <style>
-
 .banner_thumnail .swiper-pagination{
   position: absolute;
   background-color: transparent;
@@ -186,5 +185,4 @@ import 'swiper/css/navigation';
   top: 105px;
   font-size: 20px;
 }
-
 </style>

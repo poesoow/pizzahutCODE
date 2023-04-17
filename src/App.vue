@@ -21,7 +21,11 @@ export default {
     Personal,
     Banner,
     Footer
-}
+  },
+  data() {
+    return {
+    }
+  },
 }
 </script>
 

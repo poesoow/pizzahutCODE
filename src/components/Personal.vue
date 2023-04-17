@@ -60,7 +60,7 @@
         position: absolute;
         top: -100px;
         left: 40px;
-        z-index: 60;
+        z-index: 10;
         ul{
           display: flex;
           gap: 20px;

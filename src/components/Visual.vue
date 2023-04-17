@@ -57,6 +57,7 @@ import 'swiper/css/navigation';
 <style lang="scss">
 .mySwiper_visual{
   position: relative;
+  padding-top: 101px;
   height: 690px;
   .swiper-button-next, .swiper-button-prev{
     color: white;

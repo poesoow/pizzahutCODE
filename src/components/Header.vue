@@ -9,8 +9,18 @@
       </div>
       <nav class="gnb">
         <ul>
-          <li v-for="e in navlist" :key="e"><a href="#"  @click.prevent>{{ e }}</a></li>
+          <li @mouseover="hovernav = e" @mouseout="hovernav = ''" v-for="e in navlist" :key="e"><a href="#" @click.prevent>{{ e }}</a></li>
         </ul>
+        <!-- 호버메뉴 영역 -->
+        <div class="hoverMenu">
+          <ul>
+            <li 
+              :style="`index === 0`"
+              v-for="(e, index) in navsublist[this.hovernav]" :key="index">
+              {{ e }}
+            </li>
+          </ul>
+        </div>
       </nav>
       <div class="utility">
         <div class="gps">
@@ -28,77 +38,9 @@
     </div>
     <!-- 서브메뉴 영역 -->
     <div v-if="menuActive === true" class="wrap_submenu">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, nihil praesentium vero pariatur rem possimus sed, amet consequuntur rerum qui, recusandae quia alias illo modi veritatis! Inventore laboriosam necessitatibus commodi.</p> 
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit impedit doloribus consectetur, adipisci architecto dolores eum odio omnis molestiae pariatur minima quisquam fugit suscipit iure beatae in placeat amet distinctio?</p>
     </div>
+    
   </div>
 </template>
 
@@ -110,6 +52,8 @@
     data() {
       return {
         navlist: navdata.Nav.navList,
+        navsublist: navdata.Nav.navSubList,
+        hovernav: '',
         menuActive: false, // 햄버거 메뉴
       }
     },
@@ -141,22 +85,46 @@
     display: flex;
     align-items: center;
     color: #000;
+    border-bottom: 1px solid #eee;
     div.logo{
     width: 210px;
     box-sizing: border-box;
     }
-    nav.gnb ul{
-      display: flex;
-      li{
-        flex-shrink: 0;
-        a{
-          display: block;
-          margin: 0 30px;
-          padding: 30px 0;
-          font-weight: 500;
-          font-size: 20px;
-        }
-      } 
+    nav.gnb {
+      ul{
+        display: flex;
+        li{
+          flex-shrink: 0;
+          &:hover{
+          border-bottom: 1px solid #c8102e;
+          }
+          a{
+            display: block;
+            margin: 0 30px;
+            padding: 36px 0;
+            font-weight: 500;
+            font-size: 20px;
+          }
+        } 
+      }
+      .hoverMenu{
+        position: absolute;
+        top: 101px;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        border-top: none;
+        z-index: -1; // 우선순위 낮추어서 호버시 빨간색 선보이기
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.07);
+        ul {
+          margin-left: 330px;
+          li{
+          height: 64px;
+          padding-top: 30px;
+          margin-right: 60px;
+          }
+        } 
+      }
     }
     div.utility{
       flex-grow: 1;
@@ -258,7 +226,7 @@
   }
   .wrap_submenu{
     background: #fff;
-    overflow-y: scroll;
+    height: auto;
   }
 }
 </style>

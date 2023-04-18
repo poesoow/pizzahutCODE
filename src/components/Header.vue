@@ -7,15 +7,14 @@
           <img :src="require('@/assets/images/logo1.png')" alt="로고">
         </a>
       </div>
-      <nav class="gnb">
+      <nav @mouseleave="hovernav = ''" class="gnb">
         <ul>
-          <li @mouseover="hovernav = e" @mouseout="hovernav = ''" v-for="e in navlist" :key="e"><a href="#" @click.prevent>{{ e }}</a></li>
+          <li @mouseover="hovernav = e" v-for="e in navlist" :key="e"><a href="#" @click.prevent>{{ e }}</a></li>
         </ul>
         <!-- 호버메뉴 영역 -->
         <div class="hoverMenu">
           <ul>
             <li 
-              :style="`index === 0`"
               v-for="(e, index) in navsublist[this.hovernav]" :key="index">
               {{ e }}
             </li>
@@ -38,7 +37,17 @@
     </div>
     <!-- 서브메뉴 영역 -->
     <div v-if="menuActive === true" class="wrap_submenu">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit impedit doloribus consectetur, adipisci architecto dolores eum odio omnis molestiae pariatur minima quisquam fugit suscipit iure beatae in placeat amet distinctio?</p>
+      <ul class="submenu">
+        <li class="menuname" v-for="(list, index) in navMenulist" :key="index">
+          <h3>{{ index }}</h3>
+          <ul>
+            <li v-for="e in list" :key="e">{{ e }}</li>
+          </ul>
+        </li>
+      </ul>
+      <div>
+        <img :src="require(`@/assets/images/menu_banner.png`)" :alt="`메뉴배너`">
+      </div>
     </div>
     
   </div>
@@ -55,6 +64,7 @@
         navsublist: navdata.Nav.navSubList,
         hovernav: '',
         menuActive: false, // 햄버거 메뉴
+        navMenulist: navdata.NavMenu.List,
       }
     },
     methods: {
@@ -96,6 +106,7 @@
         li{
           flex-shrink: 0;
           &:hover{
+            // after 로 바꾸기
           border-bottom: 1px solid #c8102e;
           }
           a{
@@ -114,7 +125,7 @@
         right: 0;
         background-color: #fff;
         border-top: none;
-        z-index: -1; // 우선순위 낮추어서 호버시 빨간색 선보이기
+        // z-index: 40; // 우선순위 낮추어서 호버시 빨간색 선보이기
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.07);
         ul {
           margin-left: 330px;
@@ -225,8 +236,35 @@
     }
   }
   .wrap_submenu{
+    position: relative;
+    z-index: 10;
     background: #fff;
-    height: auto;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+    padding-top: 72px;
+    margin-bottom: 50px;
+    left: 409px;
+    display: flex;
+    ul.submenu{
+      width: 720px;
+      display: flex;
+      flex-wrap: wrap;
+      li.menuname{
+        flex: 1 1 30%;
+        h3{
+          font-weight: 600;
+          font-size: 22px;
+          line-height: 1.3;
+        }
+        ul li{
+          margin-top: 15px;
+        }
+      }
+    }
+    img{
+      border-radius: 16px;
+      box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.2);
+    }
   }
 }
 </style>

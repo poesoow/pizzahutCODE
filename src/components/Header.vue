@@ -8,7 +8,7 @@
         </a>
       </div>
       <nav @mouseleave="hovernav = ''" class="gnb">
-        <ul>
+        <ul class="nav">
           <li @mouseover="hovernav = e" v-for="e in navlist" :key="e"><a href="#" @click.prevent>{{ e }}</a></li>
         </ul>
         <!-- 호버메뉴 영역 -->
@@ -36,7 +36,7 @@
       </div>
     </div>
     <!-- 서브메뉴 영역 -->
-    <div v-if="menuActive === true" class="wrap_submenu">
+    <div v-if="menuActive === true" class="wrap_submenu" :style="menuActive === true ? 'overflow-y: scroll': ''">
       <ul class="submenu">
         <li class="menuname" v-for="(list, index) in navMenulist" :key="index">
           <h3>{{ index }}</h3>
@@ -101,13 +101,18 @@
     box-sizing: border-box;
     }
     nav.gnb {
-      ul{
+      ul.nav{
         display: flex;
         li{
           flex-shrink: 0;
-          &:hover{
-            // after 로 바꾸기
-          border-bottom: 1px solid #c8102e;
+          position: relative;
+          &:hover::after{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            z-index: 50;
+            border-bottom: 1px solid #c8102e;
           }
           a{
             display: block;
@@ -125,14 +130,18 @@
         right: 0;
         background-color: #fff;
         border-top: none;
-        // z-index: 40; // 우선순위 낮추어서 호버시 빨간색 선보이기
+        z-index: 40;
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.07);
         ul {
           margin-left: 330px;
+          display: flex;
           li{
           height: 64px;
           padding-top: 30px;
           margin-right: 60px;
+          &:hover{
+            color: #c8102e;
+          }
           }
         } 
       }
@@ -240,10 +249,11 @@
     z-index: 10;
     background: #fff;
     height: calc(100vh - 100px);
-    overflow-y: scroll;
+    // overflow-y: scroll;
     padding-top: 72px;
     margin-bottom: 50px;
-    left: 409px;
+    // left: 409px;
+    padding-left: 409px;
     display: flex;
     ul.submenu{
       width: 720px;
@@ -255,9 +265,37 @@
           font-weight: 600;
           font-size: 22px;
           line-height: 1.3;
+          position: relative;
+          width: max-content;
         }
         ul li{
           margin-top: 15px;
+          position: relative;
+          width: max-content;
+          &:hover{
+            color: #c8102e;
+            &::after{
+              content: '';
+              position: absolute;
+              display: block;
+              width: 100%;
+              border-bottom: 1px solid #c8102e;
+            }
+          }
+        }
+        &:nth-of-type(3):hover h3,
+        &:nth-of-type(5):hover h3,
+        &:nth-of-type(6):hover h3,
+        &:nth-of-type(10):hover h3,
+        &:nth-of-type(12):hover h3{
+          color: #c8102e;
+          &::after{
+              content: '';
+              position: absolute;
+              display: block;
+              width: 100%;
+              border-bottom: 1px solid #c8102e;
+            }
         }
       }
     }

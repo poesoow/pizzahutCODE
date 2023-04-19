@@ -55,10 +55,14 @@ import 'swiper/css/navigation';
 </script>
 
 <style lang="scss">
-.mySwiper_visual{
+.wrap_visual{
+  height: 690px;
   position: relative;
   padding-top: 101px;
-  height: 690px;
+}
+.mySwiper_visual{
+  position: relative;
+  height: inherit;
   .swiper-button-next, .swiper-button-prev{
     color: white;
   }

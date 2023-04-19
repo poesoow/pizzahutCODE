@@ -115,6 +115,7 @@ import 'swiper/css/navigation';
         .mySwiper_banner{
           position: relative;
           width: 764px;
+          // padding-top: 0;
           /* 아래는 swiper 가지고 온 그대로 */
           .swiper {
             width: 100%;

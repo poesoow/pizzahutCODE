@@ -71,6 +71,10 @@
             border-radius: 20px;
             border: 2px solid #fff;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: border-color .2s;
+            &:hover{
+              border-color: #c8102e;
+            }
             a {
               width: inherit;
               height: inherit;
@@ -121,11 +125,16 @@
             background-color: #fff;
             border-radius: 12px;
             border: 1px solid #fff;
+            
             span{
               font-weight: 600;
               font-size: 26px;
               padding-bottom: 2px;
               border-bottom: 1px solid #000;
+              &:hover{
+              color: #777;
+              border-color: #777;
+              }
             }
           }
           .login_btnSet{

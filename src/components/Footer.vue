@@ -5,10 +5,10 @@
     </div>
     <div class="footer_info">
       <ul>
-        <li>이용약관</li>
-        <li class="privacy">개인정보처리방침</li>
-        <li>공지사항</li>
-        <li>창업안내</li>
+        <li><a href="#" @click.prevent>이용약관</a></li>
+        <li class="privacy"><a href="#" @click.prevent>개인정보처리방침</a></li>
+        <li><a href="#" @click.prevent>공지사항</a></li>
+        <li><a href="#" @click.prevent>창업안내</a></li>
         <li>대표번호 1588-5588(운영시간 10:30 ~ 22:00)</li>
       </ul>
       <div class="footer_main">
@@ -23,8 +23,8 @@
       <p>한국 산업의 브랜드파워 피자전문점 부문 1위 피자헛</p>
     </div>
     <div class="footer_sns">
-      <img :src="require(`@/assets/images/ic_share_facebook1.png`)" alt="페이스북">
-      <img :src="require(`@/assets/images/ic_share_instagram1.png`)" alt="인스타그램">
+      <a href="#" @click.prevent><img :src="require(`@/assets/images/ic_share_facebook1.png`)" alt="페이스북"></a>
+      <a href="#" @click.prevent><img :src="require(`@/assets/images/ic_share_instagram1.png`)" alt="인스타그램"></a>
     </div>
   </div>
 </template>
@@ -57,6 +57,9 @@
         margin-bottom: 25px;
         li{
           display: inline-block;
+          a{
+              color: #aaa;
+            }
           &:not(:last-child)::after{
             content: '';
             display: inline-block;
@@ -67,7 +70,7 @@
             vertical-align: middle;
           }
         }
-        li.privacy{
+        li.privacy a{
           color: #fff;
         }
       }
@@ -108,7 +111,7 @@
       position: absolute;
       top: 45px;
       right: 100px;
-      img:not(:last-child){
+      a:not(:last-child){
         margin-right: 32px;
       }
     }

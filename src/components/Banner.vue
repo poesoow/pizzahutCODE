@@ -9,13 +9,15 @@
       <div class="banner_main">
         <swiper
         :loop="true"
-        :autoplay="{ delay: 5000, }" 
+        @update = "onSwiperInit"
+        :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }" 
         :modules="modules"
-        class="mySwiper_banner"
-      >
+        class="mySwiper_banner">
         <swiper-slide v-for="e in 4" :key="e">
           <div :style="{ 'background-image': 'url(' + require(`@/assets/images/swiper_slide${e}.png`) + ')' }"></div>
         </swiper-slide>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </swiper>
       </div>
       <div class="banner_thumnail">
@@ -26,17 +28,25 @@
         :loop="true"
         :pagination="true"
         :navigation="{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }"
-        :autoplay="{ delay: 5000 }" 
+         @update = "onSwiperInit"
+        :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }" 
         :modules="modules"
-        class="mySwiper_visual"
+        class="mySwiper_banner"
       >
         <swiper-slide v-for="e in 8" :key="e">
           <!-- <div :style="{ 'background-image': 'url(' + require(`@/assets/images/swiper_slide${e}.png`) + ')' }"></div> -->
           <img :src="require(`@/assets/images/swiper_slide${e}.png`)" :alt="`배너`">
         </swiper-slide>
-        <!-- <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div> -->
-        <div class="swiper-pagination-vertical"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination-vertical">
+          <div class="bannertoggleauto">
+            <button @click="toggleAutoplay">
+              <img v-if="isAutoplayEnabled" :src="require(`@/assets/images/btn_pause.png`)" alt="일시정지">
+              <img v-else :src="require(`@/assets/images/btn_play.png`)" alt="시작">
+            </button>
+          </div>
+        </div>
       </swiper>
       </div>
     </section>
@@ -60,15 +70,57 @@ import 'swiper/css/navigation';
     components: {
       Swiper, SwiperSlide
     },
-    setup() {
+    data() {
       return {
-        modules: [Pagination, Navigation, Autoplay]
+        isAutoplayEnabled: true,
       }
-    }
+    },
+    setup() {
+      
+      return {
+        modules: [Pagination, Navigation, Autoplay],
+      };
+    },
+    methods: {
+    toggleAutoplay() {
+      this.isAutoplayEnabled = !this.isAutoplayEnabled && { delay: 1000, disableOnInteraction: true }
+
+    },
+    onSwiperInit(swiper) {
+      // console.log(swiper)
+      if (this.isAutoplayEnabled) {
+        swiper.autoplay.start()
+      } else {
+        swiper.autoplay.stop()
+      }
+    },
+  },
   }
 </script>
 
 <style lang="scss">
+.bannertoggleauto{
+  position: absolute;
+  top: 200px;
+  right: 5px;
+  z-index: 70;
+  background-color: transparent;
+  button{
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    background: transparent;
+    img{
+      position: relative;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+
+
   .wrap_banner{
     margin: 100px 0 120px;
     // height: 706px;
@@ -186,4 +238,7 @@ import 'swiper/css/navigation';
   top: 105px;
   font-size: 20px;
 }
+
+
+
 </style>

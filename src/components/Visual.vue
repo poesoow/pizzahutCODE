@@ -5,7 +5,8 @@
       :pagination="{type: 'fraction'}"
       :navigation="{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }"
       :loop="true"
-      :autoplay="{ delay: 5000, }" 
+      @update = "onSwiperInit"
+      :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }" 
       :modules="modules"
       class="mySwiper_visual"
     >
@@ -14,12 +15,19 @@
       </swiper-slide>
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
-      <div class="swiper-pagination"></div>
+      <div class="swiper-pagination">
+      <div class="toggleauto">
+        <button @click="toggleAutoplay">
+          <img v-if="isAutoplayEnabled" :src="require(`@/assets/images/ic_stop1.png`)" alt="일시정지">
+          <img v-else :src="require(`@/assets/images/ic_play1.png`)" alt="시작">
+          <!-- <img v-if="isAutoplayEnabled" 
+          :style="{'background-image': 'url(' + require(`../assets/images/ic_stop1.png`) + ')'}" alt="일시정지">
+          <img v-else 
+          :style="{'background-image': 'url(' + require(`../assets/images/ic_play1.png`) + ')'}" alt="시작"> -->
+        </button>
+      </div>
+      </div>
     </swiper>
-    <!-- <div>
-      <button >시작</button>
-      <button >중지</button>
-    </div> -->
   </div>
 </template>
 
@@ -43,18 +51,56 @@ import 'swiper/css/navigation';
       SwiperSlide,
   },
   setup() {
+   
     return {
-      modules: [Pagination, Navigation, Autoplay]
+      modules: [Pagination, Navigation, Autoplay],
     };
   },
   data() {
     return {
+      isAutoplayEnabled: true,
     }
+  },
+  methods: {
+     toggleAutoplay() {
+      this.isAutoplayEnabled = !this.isAutoplayEnabled && { delay: 1000, disableOnInteraction: true }
+
+    },
+    onSwiperInit(swiper) {
+      // console.log(swiper)
+      if (this.isAutoplayEnabled) {
+        swiper.autoplay.start()
+      } else {
+        swiper.autoplay.stop()
+      }
+    },
   },
   }
 </script>
 
 <style lang="scss">
+.toggleauto{
+  position: absolute;
+  bottom: 5px;
+  left: 70px;
+  z-index: 70;
+  background-color: transparent;
+  button{
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    background: transparent;
+    img{
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 36px;
+    }
+  }
+}
+
+
+
 .wrap_visual{
   height: 690px;
   position: relative;

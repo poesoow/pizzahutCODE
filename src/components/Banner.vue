@@ -7,34 +7,41 @@
         <a href="#" @click.prevent>자세히보기</a>
       </div>
       <div class="banner_main">
-        <swiper
+        <swiper  
         :loop="true"
-        @update = "onSwiperInit"
         :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }" 
         :modules="modules"
+        @update = "onSwiperInit"
+        @swiper="setFirstSwiper"
+        :controller="{ control: secondSwiper  }"
         class="mySwiper_banner">
         <swiper-slide v-for="e in 4" :key="e">
           <div :style="{ 'background-image': 'url(' + require(`@/assets/images/swiper_slide${e}.png`) + ')' }"></div>
         </swiper-slide>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <!-- <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> -->
       </swiper>
       </div>
       <div class="banner_thumnail">
+        <!-- loopedSlides: 1 -->
         <swiper
         :direction="'vertical'"
         :slidesPerView="3"
         :spaceBetween="25"
         :loop="true"
         :pagination="true"
-        :navigation="{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }"
+        :navigation="{ 
+          prevEl: '.swiper-button-prev', 
+          nextEl: '.swiper-button-next',	}"
          @update = "onSwiperInit"
+         @swiper="setSecondSwiper"
+         :controller="{ control: firstSwiper  }"
         :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }" 
         :modules="modules"
         class="mySwiper_banner"
       >
-        <swiper-slide v-for="e in 8" :key="e">
-          <!-- <div :style="{ 'background-image': 'url(' + require(`@/assets/images/swiper_slide${e}.png`) + ')' }"></div> -->
+        <swiper-slide
+          v-for="(e, index) in 4" :key="index">
           <img :src="require(`@/assets/images/swiper_slide${e}.png`)" :alt="`배너`">
         </swiper-slide>
         <div class="swiper-button-prev"></div>
@@ -58,12 +65,14 @@
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide, } from 'swiper/vue';
 // import required modules
-import { Pagination, Navigation, Autoplay } from 'swiper';
+import { Pagination, Navigation, Autoplay, Controller } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+
+import { ref } from 'vue';
 
   export default {
     name: 'BannerView',
@@ -76,9 +85,17 @@ import 'swiper/css/navigation';
       }
     },
     setup() {
-      
+      const firstSwiper = ref(null);
+      const secondSwiper = ref(null);
+      const setFirstSwiper = (swiper) => {
+        firstSwiper.value = swiper;
+      };
+      const setSecondSwiper = (swiper) => {
+        secondSwiper.value = swiper;
+      };
       return {
-        modules: [Pagination, Navigation, Autoplay],
+        modules: [Pagination, Navigation, Autoplay, Controller], 
+        firstSwiper, secondSwiper, setFirstSwiper, setSecondSwiper
       };
     },
     methods: {
@@ -93,6 +110,8 @@ import 'swiper/css/navigation';
       } else {
         swiper.autoplay.stop()
       }
+    },
+    mounted() {
     },
   },
   }

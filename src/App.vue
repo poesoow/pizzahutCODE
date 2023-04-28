@@ -1,6 +1,7 @@
 <template>
   <Header />
   <Visual />
+  <Test />
   <Personal />
   <Banner />
   <Footer />
@@ -12,6 +13,7 @@ import Visual from './components/Visual.vue';
 import Personal from './components/Personal.vue';
 import Banner from './components/Banner.vue';
 import Footer from './components/Footer.vue';
+import Test from './components/Test.vue';
 
 export default {
   name: 'App',
@@ -20,7 +22,8 @@ export default {
     Visual,
     Personal,
     Banner,
-    Footer
+    Footer,
+    Test
   },
   data() {
     return {
@@ -35,5 +38,5 @@ export default {
   ul{list-style: none;}
   a{text-decoration: none; color: #000;}
   img{vertical-align: middle;}
-  
+
 </style>

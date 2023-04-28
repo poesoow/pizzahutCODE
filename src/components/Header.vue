@@ -14,7 +14,7 @@
         <!-- 호버메뉴 영역 -->
         <div class="hoverMenu">
           <ul>
-            <li 
+            <li
               v-for="(e, index) in navsublist[this.hovernav]" :key="index">
               {{ e }}
             </li>
@@ -49,7 +49,7 @@
         <img :src="require(`@/assets/images/menu_banner.png`)" :alt="`메뉴배너`">
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -82,6 +82,8 @@
 </script>
 
 <style lang="scss" scoped>
+@import '../style/util.scss';
+
 .wrap{
   position: fixed;
   z-index: 50;
@@ -103,6 +105,12 @@
     nav.gnb {
       ul.nav{
         display: flex;
+        @include tablet{
+          display: none;
+        }
+        @include mobile{
+          display: none;
+        }
         li{
           flex-shrink: 0;
           position: relative;
@@ -121,7 +129,7 @@
             font-weight: 500;
             font-size: 20px;
           }
-        } 
+        }
       }
       .hoverMenu{
         position: absolute;
@@ -143,7 +151,7 @@
             color: #c8102e;
           }
           }
-        } 
+        }
       }
     }
     div.utility{
@@ -154,6 +162,15 @@
       gap: 30px;
       .gps{
         text-align: right;
+        @include desktop{
+          display: none;
+        }
+        @include tablet{
+          display: block;
+        }
+        @include mobile{
+          display: block;
+        }
         button{
           font-weight: 400;
           font-size: 18px;
@@ -164,6 +181,10 @@
           cursor: pointer;
           margin-right: 64px;
           position: relative;
+          @include mobile{
+          display: block;
+          margin-right: 0;
+        }
           &::before{
             content: '';
             display: block;
@@ -208,7 +229,7 @@
             border-radius: 20px;
             text-indent: 0px !important;
         }
-        } 
+        }
         a.hamburger{
           position: relative;
           display: block;
@@ -240,7 +261,7 @@
             transform: rotate(-45deg);
             top: 0px;
           }
-        } 
+        }
       }
     }
   }
@@ -255,6 +276,17 @@
     // left: 409px;
     padding-left: 409px;
     display: flex;
+    @include desktop{
+      padding-left: 250px;
+    }
+    @include tablet{
+      padding-left: 150px;
+      padding-top: 40px;
+    }
+    @include mobile{
+      padding-left: 100px;
+      padding-top: 40px;
+    }
     ul.submenu{
       width: 720px;
       display: flex;
@@ -302,6 +334,12 @@
     img{
       border-radius: 16px;
       box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.2);
+      @include tablet{
+        display: none;
+      }
+      @include mobile{
+        display: none;
+      }
     }
   }
 }

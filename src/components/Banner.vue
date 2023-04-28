@@ -7,16 +7,17 @@
         <a href="#" @click.prevent>자세히보기</a>
       </div>
       <div class="banner_main">
-        <swiper  
+        <swiper
         :loop="true"
-        :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }" 
+        :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }"
         :modules="modules"
         @update = "onSwiperInit"
         @swiper="setFirstSwiper"
         :controller="{ control: secondSwiper  }"
         class="mySwiper_banner">
         <swiper-slide v-for="e in 4" :key="e">
-          <div :style="{ 'background-image': 'url(' + require(`@/assets/images/swiper_slide${e}.png`) + ')' }"></div>
+          <img :src="require(`@/assets/images/swiper_slide${e}.png`)" :alt="`배너`">
+          <!-- <div :style="{ 'background-image': 'url(' + require(`@/assets/images/swiper_slide${e}.png`) + ')' }"></div> -->
         </swiper-slide>
         <!-- <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div> -->
@@ -30,13 +31,13 @@
         :spaceBetween="25"
         :loop="true"
         :pagination="true"
-        :navigation="{ 
-          prevEl: '.swiper-button-prev', 
+        :navigation="{
+          prevEl: '.swiper-button-prev',
           nextEl: '.swiper-button-next',	}"
          @update = "onSwiperInit"
          @swiper="setSecondSwiper"
          :controller="{ control: firstSwiper  }"
-        :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }" 
+        :autoplay="isAutoplayEnabled && { delay: 5000, disableOnInteraction: true }"
         :modules="modules"
         class="mySwiper_banner"
       >
@@ -44,8 +45,14 @@
           v-for="(e, index) in 4" :key="index">
           <img :src="require(`@/assets/images/swiper_slide${e}.png`)" :alt="`배너`">
         </swiper-slide>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="prevandnext">
+          <div class="swiper-button-prev">
+            <img :src="require(`@/assets/images/ic_arrow5.png`)" alt="이전">
+          </div>
+          <div class="swiper-button-next">
+            <img :src="require(`@/assets/images/ic_arrow5.png`)" alt="다음">
+          </div>
+        </div>
         <div class="swiper-pagination-vertical">
           <div class="bannertoggleauto">
             <button @click="toggleAutoplay">
@@ -94,7 +101,7 @@ import { ref } from 'vue';
         secondSwiper.value = swiper;
       };
       return {
-        modules: [Pagination, Navigation, Autoplay, Controller], 
+        modules: [Pagination, Navigation, Autoplay, Controller],
         firstSwiper, secondSwiper, setFirstSwiper, setSecondSwiper
       };
     },
@@ -138,7 +145,23 @@ import { ref } from 'vue';
   }
 }
 
-
+.prevandnext{
+  position: relative;
+}
+.swiper-button-prev,
+.swiper-button-next{
+  position: absolute;
+  top: -320px;
+  right: -43px;
+  &::after{
+    content: '';
+  }
+}
+.swiper-button-prev{
+  top: -360px;
+  left: 246px;
+  transform:rotate(180deg);
+}
 
   .wrap_banner{
     margin: 100px 0 120px;
@@ -212,7 +235,7 @@ import { ref } from 'vue';
             height: 100%;
             object-fit: cover;
           }
-          
+
         }
       }
       .banner_thumnail{
@@ -242,7 +265,7 @@ import { ref } from 'vue';
             height: 100%;
             object-fit: cover;
           }
-          
+
       }
     }
   }
@@ -252,9 +275,9 @@ import { ref } from 'vue';
 .banner_thumnail .swiper-pagination{
   position: absolute;
   background-color: transparent;
-  left: 250px;
+  left: 255px;
   right: 0;
-  top: 105px;
+  top: 65px;
   font-size: 20px;
 }
 

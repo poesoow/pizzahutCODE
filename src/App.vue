@@ -1,7 +1,7 @@
 <template>
   <Header />
   <Visual />
-  <Test />
+  <!-- <Test /> -->
   <Personal />
   <Banner />
   <Footer />
@@ -13,7 +13,7 @@ import Visual from './components/Visual.vue';
 import Personal from './components/Personal.vue';
 import Banner from './components/Banner.vue';
 import Footer from './components/Footer.vue';
-import Test from './components/Test.vue';
+// import Test from './components/Test.vue';
 
 export default {
   name: 'App',
@@ -23,7 +23,7 @@ export default {
     Personal,
     Banner,
     Footer,
-    Test
+    // Test
   },
   data() {
     return {
@@ -33,10 +33,23 @@ export default {
 </script>
 
 <style lang="scss">
-  @charset "uft-8";
-  *{margin: 0; padding: 0; font-family: 'Noto Sans KR';}
-  ul{list-style: none;}
-  a{text-decoration: none; color: #000;}
-  img{vertical-align: middle;}
+@charset "uft-8";
 
-</style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR';
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+img {
+  vertical-align: middle;
+}</style>
